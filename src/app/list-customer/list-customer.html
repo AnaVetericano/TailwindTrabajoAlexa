@@ -1,0 +1,26 @@
+<h1>Listar cliente</h1>
+<table>
+    <thead>
+        <tr>
+            <td>Id cliente</td>
+            <td>Almacén</td>
+            <td>Nombre</td>
+            <td>Apellido</td>
+            <td>Correo</td>
+            <td>Id de Dirección</td>
+            <td>Activo</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let i of NewCustomer">
+            <td>{{i.customer_id}}</td>
+            <td>{{i.store_id}}</td>
+            <td>{{i.first_name}}</td>
+            <td>{{i.last_name}}</td>
+            <td>{{i.email}}</td>
+            <td>{{i.address_id}}</td>
+            <td>{{i.active}}</td>
+            <td><button [routerLink]="['/updatecustomer', i.customer_id]">Editar</button></td>
+        </tr>
+    </tbody>
+</table>    

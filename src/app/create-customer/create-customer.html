@@ -1,0 +1,11 @@
+<h1>Registrar cliente</h1>
+<form (ngSubmit)="saveCustomer()">
+    <input type="number" [(ngModel)]="newClient.store_id" name="store_id" placeholder="Id de almacén">
+    <input type="text" [(ngModel)]="newClient.first_name" name="first_name" placeholder="Primer nombre">
+    <input type="text" [(ngModel)]="newClient.last_name" name="last_name" placeholder="Apellidos">
+    <input type="email" [(ngModel)]="newClient.email" name="email" placeholder="Correo">
+    <input type="number" [(ngModel)]="newClient.address_id" name="address_id" placeholder="Dirección">
+    <label> activo en el sistema</label>
+    <input type="checkbox" [(ngModel)]="newClient.active" name="active" placeholder="Activo">
+    <button type="submit">Registrar cliente</button>
+</form>
