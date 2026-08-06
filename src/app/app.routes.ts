@@ -58,7 +58,7 @@ export const routes: Routes = [
         component: ListCustomer
     },
     {
-        path: "updatecustomer",
+        path: "updatecustomer/:id",
         component: UpdateCustomer
     }
 
