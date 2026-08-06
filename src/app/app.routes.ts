@@ -48,7 +48,7 @@ export const routes: Routes = [
         component: Actualizaradress
     },
     {
-        path: '',
+        path: 'createcustomer',
         component: CreateCustomer
     }
 
