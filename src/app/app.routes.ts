@@ -10,6 +10,7 @@ import { Listaradress } from './listaradress/listaradress';
 import { Actualizaradress } from './actualizaradress/actualizaradress';
 import { CreateCustomer } from './create-customer/create-customer';
 import { ListCustomer } from './list-customer/list-customer';
+import { UpdateCustomer } from './update-customer/update-customer';
  
 export const routes: Routes = [
     {
@@ -55,6 +56,10 @@ export const routes: Routes = [
     {
         path: "listarcustomer",
         component: ListCustomer
+    },
+    {
+        path: "updatecustomer",
+        component: UpdateCustomer
     }
 
     
