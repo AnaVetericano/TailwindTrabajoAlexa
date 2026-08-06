@@ -9,6 +9,7 @@ import { Formularioadress } from './formularioadress/formularioadress';
 import { Listaradress } from './listaradress/listaradress';
 import { Actualizaradress } from './actualizaradress/actualizaradress';
 import { CreateCustomer } from './create-customer/create-customer';
+import { ListCustomer } from './list-customer/list-customer';
  
 export const routes: Routes = [
     {
@@ -50,6 +51,10 @@ export const routes: Routes = [
     {
         path: 'createcustomer',
         component: CreateCustomer
+    },
+    {
+        path: "listarcustomer",
+        component: ListCustomer
     }
 
     
