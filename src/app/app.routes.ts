@@ -8,6 +8,7 @@ import { Actualizarcountry } from './actualizarcountry/actualizarcountry';
 import { Formularioadress } from './formularioadress/formularioadress';
 import { Listaradress } from './listaradress/listaradress';
 import { Actualizaradress } from './actualizaradress/actualizaradress';
+import { CreateCustomer } from './create-customer/create-customer';
  
 export const routes: Routes = [
     {
@@ -45,6 +46,10 @@ export const routes: Routes = [
     {
         path: '',
         component: Actualizaradress
+    },
+    {
+        path: '',
+        component: CreateCustomer
     }
 
     
