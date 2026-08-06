@@ -13,40 +13,44 @@ import { ListCustomer } from './list-customer/list-customer';
 import { UpdateCustomer } from './update-customer/update-customer';
  
 export const routes: Routes = [
-    {
+     {
         path:'',
         component: Formulariocity
     },
     {
-        path:'',
+        path:'formulariocity',
+        component: Formulariocity
+    },
+    {
+        path:'formulariocountry',
         component: Formulariocountry
     },
     {
-        path:'',
+        path:'listarcity',
         component: Listarcity
     },
     {
-        path:'',
+        path:'listarcountry',
         component: Listarcountry
     },
     {
-        path:'',
+        path:'actualizarcity',
         component: Actualizarcity
     },
       {
-        path:'',
+        path:'actualizarcountry',
         component: Actualizarcountry
     },
     {
-        path:'',
+        path:'formularioadress',
         component: Formularioadress
     },
     {
-        path: '',
+        path: 'listaradress',
         component: Listaradress
     },
     {
-        path: '',
+        path: 'actualizaradress',
         component: Actualizaradress
     },
     {
