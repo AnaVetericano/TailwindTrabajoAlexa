@@ -21,6 +21,7 @@
             <td>{{i.address_id}}</td>
             <td>{{i.active}}</td>
             <td><button [routerLink]="['/updatecustomer', i.customer_id]">Editar</button></td>
+            <td><button (click)="eliminarCustomer(i.customer_id)">Eliminar</button></td>
         </tr>
     </tbody>
 </table>
