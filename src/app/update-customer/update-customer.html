@@ -1,1 +1,11 @@
-<p>update-customer works!</p>
+<h1>Actualizar cliente</h1>
+<form (ngSubmit)="UpdateCustomer()">
+    <input type="number" [(ngModel)]="CustomerEdit.store_id" name="store_id" placeholder="Id de almacén">
+    <input type="text" [(ngModel)]="CustomerEdit.first_name" name="first_name" placeholder="Primer nombre">
+    <input type="text" [(ngModel)]="CustomerEdit.last_name" name="last_name" placeholder="Apellidos">
+    <input type="email" [(ngModel)]="CustomerEdit.email" name="email" placeholder="Correo">
+    <input type="number" [(ngModel)]="CustomerEdit.address_id" name="address_id" placeholder="Dirección">
+    <label> activo en el sistema</label>
+    <input type="checkbox" [(ngModel)]="CustomerEdit.active" name="active" placeholder="Activo">
+    <button type="submit">Actualiza</button>
+</form>
