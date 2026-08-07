@@ -14,7 +14,7 @@ export class Formularioadress {
   address: '',
   district: '',
   city_id: 0
-};
+ };
 
   constructor(private http: HttpClient) {}
 
