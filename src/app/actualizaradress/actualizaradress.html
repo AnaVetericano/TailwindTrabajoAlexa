@@ -1,1 +1,7 @@
-<p>actualizaradress works!</p>
+<p>actualizar dirección</p>
+
+<form (ngSubmit)="actualizarAdress()">
+    <input [(ngModel)]="adress.address" name="address">
+    <input [(ngModel)]="adress.district" name="district">
+    <button type="submit">Actualizar</button>   
+</form>

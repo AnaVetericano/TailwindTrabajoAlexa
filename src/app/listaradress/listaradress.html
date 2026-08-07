@@ -1,1 +1,23 @@
-<p>listaradress works!</p>
+<p>listar Direcciones</p>
+
+
+<table>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Dirección</th>
+            <th>Distrito</th>
+        </tr>
+    </thead>
+    <tbody> 
+        <tr *ngFor="let adress of adress">
+            <td>{{ adress.address_id }}</td>
+            <td>{{ adress.address }}</td>
+            <td>{{ adress.district }}</td>
+            <td>{{ adress.city_id }}</td>
+            <td><button (click)="eeliminar(adress.address_id)">Eliminar</button></td>
+            <td><button (click)="llevarACtualizar(adress.address_id)">Actualizar</button></td>
+            <td><button [routerLink]="['/Actualizaradress', adress.address_id]">Actualizar RouterLink</button></td>
+        </tr>
+    </tbody>
+</table>
