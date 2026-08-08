@@ -40,11 +40,3 @@ guardarcity(){
 
 
 
-
-
-
-apikey:'sb_publishable_qnp1xzi89N_0c2Yex-wbwQ_ddmCG28x',
-        Authorization:'Bearer sb_publishable_qnp1xzi89N_0c2Yex-wbwQ_ddmCG28x',
-        'Content-Type':'application/json'
-
-        }
