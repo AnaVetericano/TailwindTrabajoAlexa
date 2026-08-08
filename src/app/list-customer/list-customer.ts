@@ -26,7 +26,7 @@ export class ListCustomer implements AfterViewInit {
   NewCustomer: InCustomer[] = []
   API_CUSTOMER = "https://srrpeanqjqfxtnuwhjez.supabase.co/rest/v1/customer"
   
-  // Instancia para guardar la gráfica
+ 
   private chart: any;
 
   constructor(
@@ -40,7 +40,7 @@ export class ListCustomer implements AfterViewInit {
   }
 
   ngAfterViewInit() {
-    // Inicializamos la gráfica al cargar la vista
+   
   }
 
   loadList(){
@@ -56,21 +56,21 @@ export class ListCustomer implements AfterViewInit {
           this.cdr.detectChanges()
           console.log(response)
           
-          // Actualizamos la gráfica con los datos reales que llegan de la API
+          
           this.actualizarGrafica();
         }
       })
   }
 
   actualizarGrafica() {
-    // Contamos cuántos están activos (true) y cuántos inactivos (false)
+   
     const activos = this.NewCustomer.filter(c => c.active === true).length;
     const inactivos = this.NewCustomer.filter(c => c.active === false).length;
 
     const canvas = document.getElementById('customerPieChart') as HTMLCanvasElement;
     if (!canvas) return;
 
-    // Si ya existe una gráfica previa, la destruimos para evitar errores de superposición
+    
     if (this.chart) {
       this.chart.destroy();
     }
@@ -81,7 +81,7 @@ export class ListCustomer implements AfterViewInit {
         labels: ['Activos', 'Inactivos'],
         datasets: [{
           data: [activos, inactivos],
-          backgroundColor: ['#831843', '#fbcfe8'], // Tonos acorde a tu diseño rosado/rosa oscuro
+          backgroundColor: ['#831843', '#fbcfe8'], 
         }]
       },
       options: {

@@ -38,7 +38,7 @@ export const routes: Routes = [
         component: Actualizarcity
     },
       {
-        path:'actualizarcountry',
+        path:'actualizarcountry/:id',
         component: Actualizarcountry
     },
     {
