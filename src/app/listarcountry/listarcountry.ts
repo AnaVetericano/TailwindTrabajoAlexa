@@ -5,8 +5,9 @@ import { RouterLink } from '@angular/router';
 import { Router } from '@angular/router';
 
 interface Country{
+  country_id:number;
   country:string;
-  id:number
+  last_update:string
 }
 
 
@@ -25,7 +26,7 @@ ngOnInit(){
 }
 
 traerCountrys(){
-  this.http.get<Country[]>(`https://srrpeanqjqfxtnuwhjez.supabase.co/rest/v1/country?id=eq.`,
+  this.http.get<Country[]>(`https://srrpeanqjqfxtnuwhjez.supabase.co/rest/v1/country`,
         {
       headers:{
         apikey:'sb_publishable_qnp1xzi89N_0c2Yex-wbwQ_ddmCG28x',
@@ -40,7 +41,7 @@ traerCountrys(){
       }
     })
 }   eliminarr(id:number){
-  this.http.delete('https://srrpeanqjqfxtnuwhjez.supabase.co/rest/v1/country?id=eq'+id,
+  this.http.delete('https://srrpeanqjqfxtnuwhjez.supabase.co/rest/v1/country?id=eq.'+id,
         {
       headers:{
         apikey:'sb_publishable_qnp1xzi89N_0c2Yex-wbwQ_ddmCG28x',
