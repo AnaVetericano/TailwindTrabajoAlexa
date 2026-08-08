@@ -1,7 +1,32 @@
-<p>actualizar dirección</p>
+<div class="max-w-md mx-auto my-12 bg-white rounded-2xl border border-pink-200 p-9 shadow-sm">
 
-<form (ngSubmit)="actualizarAdress()">
-    <input [(ngModel)]="adress.address" name="address">
-    <input [(ngModel)]="adress.district" name="district">
-    <button type="submit">Actualizar</button>   
-</form>
+    <h2 class="text-2xl font-bold text-pink-800 text-center">Actualizar Dirección</h2>
+    <p class="text-pink-400 text-sm text-center mt-1">Modifica los datos de la dirección</p>
+
+    <hr class="my-6 border-pink-100">
+
+    <form (ngSubmit)="actualizarAdress()" class="space-y-5">
+
+        <div>
+            <label class="block text-sm font-semibold text-pink-800 mb-1.5">Dirección</label>
+            <input type="text" [(ngModel)]="adress.address" name="address" placeholder="Ingresa la nueva dirección"
+                class="w-full px-3.5 py-2.5 rounded-lg border border-pink-200 text-pink-900 placeholder-pink-300 text-sm focus:outline-none focus:border-pink-500 focus:ring-1 focus:ring-pink-500">
+        </div>
+
+        <div>
+            <label class="block text-sm font-semibold text-pink-800 mb-1.5">Distrito</label>
+            <input type="text" [(ngModel)]="adress.district" name="district" placeholder="Ingresa el nuevo distrito"
+                class="w-full px-3.5 py-2.5 rounded-lg border border-pink-200 text-pink-900 placeholder-pink-300 text-sm focus:outline-none focus:border-pink-500 focus:ring-1 focus:ring-pink-500">
+        </div>
+
+        <div>
+            <label class="block text-sm font-semibold text-pink-800 mb-1.5">ID de Ciudad</label>
+            <input type="number" [(ngModel)]="adress.city_id" name="city_id" placeholder="Ej: 1"
+                class="w-full px-3.5 py-2.5 rounded-lg border border-pink-200 text-pink-900 placeholder-pink-300 text-sm focus:outline-none focus:border-pink-500 focus:ring-1 focus:ring-pink-500">
+        </div>
+
+        <button type="submit" class="w-full mt-2 bg-pink-800 hover:bg-pink-900 text-white font-medium py-3 px-4 rounded-xl transition-colors text-sm shadow-sm">
+            Actualizar Dirección
+        </button>
+    </form>
+</div>
