@@ -26,8 +26,10 @@ export class ListCustomer implements AfterViewInit {
   NewCustomer: InCustomer[] = []
   API_CUSTOMER = "https://srrpeanqjqfxtnuwhjez.supabase.co/rest/v1/customer"
   
-  // Instancia para guardar la gráfica
   private chart: any;
+  
+  // NUEVO: Variable para guardar temporalmente el ID que el usuario quiere borrar
+  idClienteAEliminar: number | null = null;
 
   constructor(
     private http: HttpClient, 
@@ -39,9 +41,7 @@ export class ListCustomer implements AfterViewInit {
     this.loadList()
   }
 
-  ngAfterViewInit() {
-    // Inicializamos la gráfica al cargar la vista
-  }
+  ngAfterViewInit() {}
 
   loadList(){
       const headers = {
@@ -55,22 +55,18 @@ export class ListCustomer implements AfterViewInit {
           this.NewCustomer = response
           this.cdr.detectChanges()
           console.log(response)
-          
-          // Actualizamos la gráfica con los datos reales que llegan de la API
           this.actualizarGrafica();
         }
       })
   }
 
   actualizarGrafica() {
-    // Contamos cuántos están activos (true) y cuántos inactivos (false)
     const activos = this.NewCustomer.filter(c => c.active === true).length;
     const inactivos = this.NewCustomer.filter(c => c.active === false).length;
 
     const canvas = document.getElementById('customerPieChart') as HTMLCanvasElement;
     if (!canvas) return;
 
-    // Si ya existe una gráfica previa, la destruimos para evitar errores de superposición
     if (this.chart) {
       this.chart.destroy();
     }
@@ -81,7 +77,7 @@ export class ListCustomer implements AfterViewInit {
         labels: ['Activos', 'Inactivos'],
         datasets: [{
           data: [activos, inactivos],
-          backgroundColor: ['#831843', '#fbcfe8'], // Tonos acorde a tu diseño rosado/rosa oscuro
+          backgroundColor: ['#831843', '#fbcfe8'],
         }]
       },
       options: {
@@ -95,22 +91,39 @@ export class ListCustomer implements AfterViewInit {
     });
   }
 
-  eliminarCustomer(id:number){
-      const headers = {
-        apikey: 'sb_publishable_qnp1xzi89N_0c2Yex-wbwQ_ddmCG28x',
-        Authorization: 'Bearer sb_publishable_qnp1xzi89N_0c2Yex-wbwQ_ddmCG28x',
-        'Content-Type': 'application/json'
-      }
+  // NUEVO: Abre la ventana emergente y guarda el ID del cliente seleccionado
+  abrirModalEliminar(id: number) {
+    this.idClienteAEliminar = id;
+    const modal = document.getElementById('modalEliminar') as HTMLDialogElement;
+    if (modal) modal.showModal();
+  }
 
-      this.http.delete(`${this.API_CUSTOMER}?customer_id=eq.${id}`,
-        {headers}
-      ).subscribe({
-        next:(response)=>{
-          this.cdr.detectChanges()
-          this.loadList()
-          alert(`Cliente con id ${id} elimnado correctamente`)
-          console.log(response);
-        }
-      })
+  // NUEVO: Cierra la ventana emergente sin hacer nada
+  cerrarModalEliminar() {
+    const modal = document.getElementById('modalEliminar') as HTMLDialogElement;
+    if (modal) modal.close();
+    this.idClienteAEliminar = null;
+  }
+
+  // NUEVO: Ejecuta la eliminación real cuando el usuario confirma dentro del modal
+  confirmarEliminacion() {
+    if (this.idClienteAEliminar === null) return;
+
+    const id = this.idClienteAEliminar;
+    const headers = {
+      apikey: 'sb_publishable_qnp1xzi89N_0c2Yex-wbwQ_ddmCG28x',
+      Authorization: 'Bearer sb_publishable_qnp1xzi89N_0c2Yex-wbwQ_ddmCG28x',
+      'Content-Type': 'application/json'
+    }
+
+    this.http.delete(`${this.API_CUSTOMER}?customer_id=eq.${id}`, {headers}).subscribe({
+      next:(response)=>{
+        this.cerrarModalEliminar(); // Cierra el modal al terminar
+        this.cdr.detectChanges()
+        this.loadList()
+        alert(`Cliente con id ${id} eliminado correctamente`)
+        console.log(response);
+      }
+    })
   }
 }
