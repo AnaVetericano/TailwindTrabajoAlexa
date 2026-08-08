@@ -42,9 +42,10 @@ export class Listaradress {
     })
   }
 
-  eeliminar(id: number){
+  eeliminar(id:number){
     
-    this.http.delete('https://srrpeanqjqfxtnuwhjez.supabase.co/rest/v1/address?id=eq. '+ id, 
+    this.http.delete(
+    'https://srrpeanqjqfxtnuwhjez.supabase.co/rest/v1/address?address_id=eq.'+ id, 
     {
       headers: {
         apikey: 'sb_publishable_qnp1xzi89N_0c2Yex-wbwQ_ddmCG28x',
@@ -54,13 +55,17 @@ export class Listaradress {
     }
     ).subscribe({
       next:(respuesta)=>{
-        alert("registro eliminado"+respuesta+ "id"+id)
+        alert("registro eliminado")
         this.traerAdress()
         this.cdr.detectChanges();
-      }
+      },
+        error: (error) => {
+            console.log(error);
+            alert("Error al eliminar");
+        }
     })
   }
   llevarACtualizar(id:number){
-    this.router.navigate(['/Actualizaradress',id])
+    this.router.navigate(['/actualizaradress',id])
   }
 }

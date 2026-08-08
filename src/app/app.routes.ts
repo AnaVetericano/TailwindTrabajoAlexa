@@ -50,7 +50,7 @@ export const routes: Routes = [
         component: Listaradress
     },
     {
-        path: 'actualizaradress',
+        path: 'actualizaradress/:id',
         component: Actualizaradress
     },
     {
