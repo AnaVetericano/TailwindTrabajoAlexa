@@ -1,25 +1,25 @@
-<table class="flex flex-col text-center items-center [&_td]:p-0.5">
-    <div class="[&_td]:border">
-        <h1>Listar cliente</h1>
-        <thead>
-            <tr class="bg-amber-200">
-                <td>Id ciudad</td>
-                <td>Ciudad</td>
-                <td>Id de país</td>
-                <td>Fecha de ultima actualización</td>
-                <td>Editar ciudad</td>
-                <td>Eliminar ciudad</td>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let i of NewCity">
-                <td>{{i.city_id}}</td>
-                <td>{{i.city}}</td>
-                <td>{{i.country_id}}</td>
-                <td>{{i.last_update}}</td>
-                <td class="bg-amber-100"><button [routerLink]="['/actualizarcity', i.city_id]">Editar</button></td>
-                <td class="bg-red-300"><button (click)="eliminarCity(i.city_id)">Eliminar</button></td>
-            </tr>
-        </tbody>
-    </div>
-</table>
+<h1 class="text-center">Listar ciudad</h1>
+<div class="mx-10 overflow-x-auto max-w-full shadow-md rounded-xl my-4">
+    <table class="w-full whitespace-nowrap text-center [&_td]:p-2 [&_th]:p-2">
+            <thead>
+                <tr class="bg-pink-800 text-white [&_th]:border [&_th]:border-pink-950">
+                    <th>Id ciudad</th>
+                    <th>Ciudad</th>
+                    <th>Id de país</th>
+                    <th>Fecha de ultima actualización</th>
+                    <th>Editar ciudad</th>
+                    <th>Eliminar ciudad</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let i of NewCity" class="[&_td]:border [&_td]:border-y-gray-200 [&_td]:border-x-gray-400">
+                    <td>{{i.city_id}}</td>
+                    <td>{{i.city}}</td>
+                    <td>{{i.country_id}}</td>
+                    <td>{{i.last_update}}</td>
+                    <td class="bg-amber-100"><button [routerLink]="['/actualizarcity', i.city_id]">Editar</button></td>
+                    <td class="bg-red-300"><button (click)="eliminarCity(i.city_id)">Eliminar</button></td>
+                </tr>
+            </tbody>
+    </table>
+</div>
