@@ -14,7 +14,6 @@
                 <th class="p-2">Distrito</th>
                 <th class="p-2">Eliminar</th>
                 <th class="p-2">Actualizar</th>
-                <th class="p-2">RouterLink</th>
             </tr>
         </thead>
 
@@ -48,13 +47,6 @@
                 <td class="p-2 text-center">
                     <button
                         (click)="llevarACtualizar(adress.address_id)">
-                        Actualizar
-                    </button>
-                </td>
-
-                <td class="p-2 text-center">
-                    <button
-                        [routerLink]="['/Actualizaradress', adress.address_id]">
                         Actualizar
                     </button>
                 </td>

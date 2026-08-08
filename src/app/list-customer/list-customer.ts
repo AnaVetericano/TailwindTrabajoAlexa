@@ -28,6 +28,9 @@ export class ListCustomer implements AfterViewInit {
   
  
   private chart: any;
+  
+ 
+  idClienteAEliminar: number | null = null;
 
   constructor(
     private http: HttpClient, 
@@ -95,22 +98,39 @@ export class ListCustomer implements AfterViewInit {
     });
   }
 
-  eliminarCustomer(id:number){
-      const headers = {
-        apikey: 'sb_publishable_qnp1xzi89N_0c2Yex-wbwQ_ddmCG28x',
-        Authorization: 'Bearer sb_publishable_qnp1xzi89N_0c2Yex-wbwQ_ddmCG28x',
-        'Content-Type': 'application/json'
-      }
+ 
+  abrirModalEliminar(id: number) {
+    this.idClienteAEliminar = id;
+    const modal = document.getElementById('modalEliminar') as HTMLDialogElement;
+    if (modal) modal.showModal();
+  }
 
-      this.http.delete(`${this.API_CUSTOMER}?customer_id=eq.${id}`,
-        {headers}
-      ).subscribe({
-        next:(response)=>{
-          this.cdr.detectChanges()
-          this.loadList()
-          alert(`Cliente con id ${id} elimnado correctamente`)
-          console.log(response);
-        }
-      })
+  
+  cerrarModalEliminar() {
+    const modal = document.getElementById('modalEliminar') as HTMLDialogElement;
+    if (modal) modal.close();
+    this.idClienteAEliminar = null;
+  }
+
+  
+  confirmarEliminacion() {
+    if (this.idClienteAEliminar === null) return;
+
+    const id = this.idClienteAEliminar;
+    const headers = {
+      apikey: 'sb_publishable_qnp1xzi89N_0c2Yex-wbwQ_ddmCG28x',
+      Authorization: 'Bearer sb_publishable_qnp1xzi89N_0c2Yex-wbwQ_ddmCG28x',
+      'Content-Type': 'application/json'
+    }
+
+    this.http.delete(`${this.API_CUSTOMER}?customer_id=eq.${id}`, {headers}).subscribe({
+      next:(response)=>{
+        this.cerrarModalEliminar(); 
+        this.cdr.detectChanges()
+        this.loadList()
+        alert(`Cliente con id ${id} eliminado correctamente`)
+        console.log(response);
+      }
+    })
   }
 }
