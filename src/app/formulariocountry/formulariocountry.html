@@ -1,1 +1,5 @@
 <p>Formulario Country</p>
+<form (ngSubmit)="guardarcountry()">
+    <input type="text"   [(ngModel)]="nuevaCountry.country"      name="nueva country"  placeholder="Pais">    
+    <button type="submit">Actualizar</button>
+</form>

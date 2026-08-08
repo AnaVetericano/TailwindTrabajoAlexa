@@ -1,1 +1,20 @@
-<p>listarcountry works!</p>
+<a>LISTAR COUNTRY</a>
+<table>
+    <thead>
+        <tr>
+        <a><th>Country</th></a>
+        <a><th>Id</th></a>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let country of countrys">
+        <td>{{country.id}}</td>
+        <td>{{country.country}}</td>
+        <td><button (click)="eliminarr(country.id)">Eliminar</button></td>
+        <td><button (click)="llevarActualizar(country.id)">Actualizar</button></td>
+        <td><button [routerLink]="['/Actualizarcountry', country.id]">Actualizar Routerlink</button></td>
+        </tr>
+    </tbody>
+</table>
+
+
