@@ -1,1 +1,6 @@
 <p>Formulario City</p>
+<form (ngSubmit)="guardarcity()">
+    <input type="text"     [(ngModel)]="nuevoCity.city"       name="city"               placeholder="Ciudad" >
+    <input type="number"   [(ngModel)]="nuevoCity.country_id" country_id="country_id"   placeholder="Id de Pais">     
+    <button type="submit">Guardar</button>
+</form>
