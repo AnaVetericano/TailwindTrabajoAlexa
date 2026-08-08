@@ -1,50 +1,67 @@
-<div class="max-w-5x1 mx-auto my-12 bg-white rounded-2xl border border-pink-200 p-9">
+<h2 class="text-center text-lg mt-4">Lista de Direcciones</h2>
 
-    <h2 class="text-2xl text-pink-800 text-center font-bold">Lista de Direcciones</h2>
-    <p class="text-pink-400 text-sm text-center mt-1">Direcciones registradas</p>
+<p class="text-center text-sm">Direcciones registradas</p>
 
-    <hr class="my-6 border-pink-100">
+<div class="mx-8">
 
-    <div class="overflow-x-auto">
-        <table class="w-full text-left text-sm border-collapse">
-            <thead>
-                <tr class="bg-pink-50/70 text-pink-800 border-b border-pink-100">
-                    <th class="p-3.5 font-semibold text-center">ID</th>
-                    <th class="p-3.5 font-semibold text-center">Ciudad</th>
-                    <th class="p-3.5 font-semibold">Dirección</th>
-                    <th class="p-3.5 font-semibold">Distrito</th>
-                    <th class="p-3.5 font-semibold text-center">Eliminar</th>
-                    <th class="p-3.5 font-semibold text-center">Actualizar</th>
-                    <th class="p-3.5 font-semibold text-center">Actualizar RouterLink</th>
-                </tr>
-            </thead>
-            <tbody class="divide-y divide-pink-100 text-gray-700">
-                <tr *ngFor="let adress of adress" class="hover:bg-pink-50/30 transition-colors">
-                    <td class="p-3.5 text-center font-medium text-pink-900">{{ adress.address_id }}</td>
-                    <td class="p-3.5 text-center">{{ adress.city_id }}</td>
-                    <td class="p-3.5">{{ adress.address }}</td>
-                    <td class="p-3.5">{{ adress.district }}</td>
-                    <td class="p-3.5 text-center">
-                        <button (click)="eeliminar(adress.address_id)"
-                            class="bg-pink-100 hover:bg-pink-200 text-pink-700 font-medium px-3 py-1.5 rounded-lg transition-colors text-xs">
-                            Eliminar
-                        </button>
-                    </td>
-                    <td class="p-3.5 text-center">
-                        <button (click)="llevarACtualizar(adress.address_id)"
-                            class="bg-blue-50 hover:bg-blue-200 text-blue-600 font-medium px-3 py-1.5 rounded-lg transition-colors text-xs">
-                            Actualizar
-                        </button>
-                    </td>
-                    <td class="p-3.5 text-center">
-                        <button [routerLink]="['/actualizaradress', adress.address_id]"
-                            class="bg-emerald-50 hover:bg-emerald-100 text-emerald-600 font-medium px-3 py-1.5 rounded-lg transition-colors text-xs">
-                            Actualizar RouterLink
-                        </button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+    <table class="w-full mt-4 border-collapse border border-pink-300 rounded-lg shadow-md overflow-hidden">
 
+        <thead>
+            <tr class="bg-pink-800 text-white">
+                <th class="p-2">ID</th>
+                <th class="p-2">Ciudad</th>
+                <th class="p-2">Dirección</th>
+                <th class="p-2">Distrito</th>
+                <th class="p-2">Eliminar</th>
+                <th class="p-2">Actualizar</th>
+                <th class="p-2">RouterLink</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            <tr *ngFor="let adress of adress" class="border-b border-pink-300" >
+
+                <td class="p-2 text-center">
+                    {{ adress.address_id }}
+                </td>
+
+                <td class="p-2 text-center">
+                    {{ adress.city_id }}
+                </td>
+
+                <td class="p-2">
+                    {{ adress.address }}
+                </td>
+
+                <td class="p-2">
+                    {{ adress.district }}
+                </td>
+
+                <td class="p-2 text-center">
+                    <button
+                        (click)="eeliminar(adress.address_id)">
+                        Eliminar
+                    </button>
+                </td>
+
+                <td class="p-2 text-center">
+                    <button
+                        (click)="llevarACtualizar(adress.address_id)">
+                        Actualizar
+                    </button>
+                </td>
+
+                <td class="p-2 text-center">
+                    <button
+                        [routerLink]="['/Actualizaradress', adress.address_id]">
+                        Actualizar
+                    </button>
+                </td>
+
+            </tr>
+
+        </tbody>
+
+    </table>
 </div>
