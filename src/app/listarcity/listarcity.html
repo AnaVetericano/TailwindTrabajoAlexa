@@ -1,1 +1,25 @@
-<p>listarcity works!</p>
+<table class="flex flex-col text-center items-center [&_td]:p-0.5">
+    <div class="[&_td]:border">
+        <h1>Listar cliente</h1>
+        <thead>
+            <tr class="bg-amber-200">
+                <td>Id ciudad</td>
+                <td>Ciudad</td>
+                <td>Id de país</td>
+                <td>Fecha de ultima actualización</td>
+                <td>Editar ciudad</td>
+                <td>Eliminar ciudad</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let i of NewCity">
+                <td>{{i.city_id}}</td>
+                <td>{{i.city}}</td>
+                <td>{{i.country_id}}</td>
+                <td>{{i.last_update}}</td>
+                <td class="bg-amber-100"><button [routerLink]="['/actualizarcity', i.city_id]">Editar</button></td>
+                <td class="bg-red-300"><button (click)="eliminarCity(i.city_id)">Eliminar</button></td>
+            </tr>
+        </tbody>
+    </div>
+</table>
