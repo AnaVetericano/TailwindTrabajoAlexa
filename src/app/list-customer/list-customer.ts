@@ -1,8 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { ChangeDetectorRef, Component } from '@angular/core';
+import { ChangeDetectorRef, Component, AfterViewInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
+import Chart from 'chart.js/auto';
 
 interface InCustomer{
     customer_id: number,
@@ -21,9 +22,13 @@ interface InCustomer{
   styleUrl: './list-customer.css',
 })
 
-export class ListCustomer {
+export class ListCustomer implements AfterViewInit {
   NewCustomer: InCustomer[] = []
   API_CUSTOMER = "https://srrpeanqjqfxtnuwhjez.supabase.co/rest/v1/customer"
+  
+  // Instancia para guardar la gráfica
+  private chart: any;
+
   constructor(
     private http: HttpClient, 
     private cdr: ChangeDetectorRef,
@@ -32,6 +37,10 @@ export class ListCustomer {
 
   ngOnInit(){
     this.loadList()
+  }
+
+  ngAfterViewInit() {
+    // Inicializamos la gráfica al cargar la vista
   }
 
   loadList(){
@@ -46,8 +55,44 @@ export class ListCustomer {
           this.NewCustomer = response
           this.cdr.detectChanges()
           console.log(response)
+          
+          // Actualizamos la gráfica con los datos reales que llegan de la API
+          this.actualizarGrafica();
         }
       })
+  }
+
+  actualizarGrafica() {
+    // Contamos cuántos están activos (true) y cuántos inactivos (false)
+    const activos = this.NewCustomer.filter(c => c.active === true).length;
+    const inactivos = this.NewCustomer.filter(c => c.active === false).length;
+
+    const canvas = document.getElementById('customerPieChart') as HTMLCanvasElement;
+    if (!canvas) return;
+
+    // Si ya existe una gráfica previa, la destruimos para evitar errores de superposición
+    if (this.chart) {
+      this.chart.destroy();
+    }
+
+    this.chart = new Chart(canvas, {
+      type: 'pie',
+      data: {
+        labels: ['Activos', 'Inactivos'],
+        datasets: [{
+          data: [activos, inactivos],
+          backgroundColor: ['#831843', '#fbcfe8'], // Tonos acorde a tu diseño rosado/rosa oscuro
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            position: 'bottom'
+          }
+        }
+      }
+    });
   }
 
   eliminarCustomer(id:number){
