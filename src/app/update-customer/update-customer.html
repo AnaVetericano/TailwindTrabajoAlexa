@@ -1,11 +1,22 @@
-<h1>Actualizar cliente</h1>
-<form (ngSubmit)="UpdateCustomer()">
-    <input type="number" [(ngModel)]="CustomerEdit.store_id" name="store_id" placeholder="Id de almacén">
-    <input type="text" [(ngModel)]="CustomerEdit.first_name" name="first_name" placeholder="Primer nombre">
-    <input type="text" [(ngModel)]="CustomerEdit.last_name" name="last_name" placeholder="Apellidos">
-    <input type="email" [(ngModel)]="CustomerEdit.email" name="email" placeholder="Correo">
-    <input type="number" [(ngModel)]="CustomerEdit.address_id" name="address_id" placeholder="Dirección">
-    <label> activo en el sistema</label>
-    <input type="checkbox" [(ngModel)]="CustomerEdit.active" name="active" placeholder="Activo">
-    <button type="submit">Actualiza</button>
+<form (ngSubmit)="UpdateCustomer()" class="max-w-md mx-auto my-12 bg-pink-40 rounded-2xl border
+border-pink-200 p-9 shadow-[0_0_13px_-10px] text-pink-800">
+    <h1 class="text-center text-xl font-semibold">Actualizar cliente</h1>
+    <div class="flex flex-col [&_input]:border [&_input]:border-pink-200 [&_input]:py-2 [&_input]:px-2 [&_input]:rounded-lg
+    [&_input]:text-black">
+        <label>Id de almacén</label>
+        <input type="number" [(ngModel)]="CustomerEdit.store_id" name="store_id" placeholder="Id de almacén">
+        <label>Primer nombre</label>
+        <input type="text" [(ngModel)]="CustomerEdit.first_name" name="first_name" placeholder="Primer nombre">
+        <label>Apellido</label>
+        <input type="text" [(ngModel)]="CustomerEdit.last_name" name="last_name" placeholder="Apellidos">
+        <label>Correo</label>
+        <input type="email" [(ngModel)]="CustomerEdit.email" name="email" placeholder="Correo">
+        <label>Id de dirección</label>
+        <input type="number" [(ngModel)]="CustomerEdit.address_id" name="address_id" placeholder="Dirección">
+        <div class="flex gap-3.5 py-2">
+            <label>activo en el sistema</label>
+            <input type="checkbox" [(ngModel)]="CustomerEdit.active" name="active" placeholder="Activo" class="w-4 mt-1">
+        </div>
+    </div>
+        <button type="submit" class="bg-pink-800 text-white py-3 rounded-xl font-bold w-full">Actualizar</button>
 </form>
