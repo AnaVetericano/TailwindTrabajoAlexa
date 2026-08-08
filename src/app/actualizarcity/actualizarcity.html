@@ -1,1 +1,6 @@
-<p>actualizarcity works!</p>
+<form (ngSubmit)="UpdateCity()">
+    <h1>Crear Ciudad</h1>
+    <input type="text" [(ngModel)]="CityEdit.city" name="city" placeholder="Ciudad" >
+    <input type="number" [(ngModel)]="CityEdit.country_id" name="country_id" placeholder="Id de Pais">     
+    <button type="submit">Guardar</button>
+</form>

@@ -1,1 +1,27 @@
-<p>listarcountry works!</p>
+<a class="text-3xl font-bold text-fuchsia-700">LISTAR COUNTRY</a>
+<table class="w-full border-collapse shadow-md">
+    <thead class="bg-fuchsia-600 text-white">
+        <tr>
+        <a><th class="px-4 py-3">Country</th></a>
+        <a><th class="px-4 py-3">Ultima Actualizacion</th></a>
+        <a><th class="px-4 py-3">Opciones</th></a>
+        <th class="px-4 py-3">Eliminar</th>
+        <th class="px-4 py-3">Actualizar</th>
+        <th class="px-4 py-3">RouterLink</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let country of countrys"
+        class="border-b hover:bg-pink-50">
+        <td  class="px-6 py-3 text-gray-700">{{country.country_id}}</td>
+        <td  class="px-6 py-3 text-gray-700">{{country.country}}</td>
+        <td  class="px-6 py-3 text-gray-600">{{country.last_update}}</td>
+        <td  class="bg-pink-500 hover:bg-pink-600 text-white px-4 py-2 rounded"><button (click)="eliminarr(country.country_id)">Eliminar</button></td>
+        <td  class="bg-fuchsia-500 hover:bg-fuchsia-600 text-white px-4 py-2 rounded"><button (click)="llevarActualizar(country.country_id)">Actualizar</button></td>
+        <td  class="bg-pink-400 hover:bg-pink-500 text-white px-4 py-2 rounded"><button [routerLink]="['/Actualizarcountry', country.country_id]">Actualizar Routerlink</button></td>
+        </tr>
+    </tbody>
+</table>
+
+

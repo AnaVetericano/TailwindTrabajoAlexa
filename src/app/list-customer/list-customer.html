@@ -1,27 +1,29 @@
-<h1>Listar cliente</h1>
-<table>
-    <thead>
-        <tr>
-            <td>Id cliente</td>
-            <td>Almacén</td>
-            <td>Nombre</td>
-            <td>Apellido</td>
-            <td>Correo</td>
-            <td>Id de Dirección</td>
-            <td>Activo</td>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let i of NewCustomer">
-            <td>{{i.customer_id}}</td>
-            <td>{{i.store_id}}</td>
-            <td>{{i.first_name}}</td>
-            <td>{{i.last_name}}</td>
-            <td>{{i.email}}</td>
-            <td>{{i.address_id}}</td>
-            <td>{{i.active}}</td>
-            <td><button [routerLink]="['/updatecustomer', i.customer_id]">Editar</button></td>
-            <td><button (click)="eliminarCustomer(i.customer_id)">Eliminar</button></td>
-        </tr>
-    </tbody>
+<table class="flex flex-col text-center items-center [&_td]:p-0.5">
+    <div class="[&_td]:border">
+        <h1>Listar cliente</h1>
+        <thead>
+            <tr class="bg-amber-200">
+                <td>Id cliente</td>
+                <td>Almacén</td>
+                <td>Nombre</td>
+                <td>Apellido</td>
+                <td>Correo</td>
+                <td>Id de Dirección</td>
+                <td>Activo</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let i of NewCustomer">
+                <td>{{i.customer_id}}</td>
+                <td>{{i.store_id}}</td>
+                <td>{{i.first_name}}</td>
+                <td>{{i.last_name}}</td>
+                <td>{{i.email}}</td>
+                <td>{{i.address_id}}</td>
+                <td>{{i.active}}</td>
+                <td class="bg-amber-100"><button [routerLink]="['/updatecustomer', i.customer_id]">Editar</button></td>
+                <td class="bg-red-300"><button (click)="eliminarCustomer(i.customer_id)">Eliminar</button></td>
+            </tr>
+        </tbody>
+    </div>
 </table>

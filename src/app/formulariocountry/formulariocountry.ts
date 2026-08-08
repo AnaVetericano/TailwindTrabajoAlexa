@@ -25,7 +25,7 @@ guardarcountry(){
       }
     }).subscribe({
       next:(respuesta)=>{
-        alert("Country guardad correctamente"+respuesta)
+        alert("Country guardado correctamente"+respuesta)
       }
     }
 

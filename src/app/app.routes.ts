@@ -34,7 +34,7 @@ export const routes: Routes = [
         component: Listarcountry
     },
     {
-        path:'actualizarcity',
+        path:'actualizarcity/:id',
         component: Actualizarcity
     },
       {
