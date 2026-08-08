@@ -1,6 +1,12 @@
-<p>Formulario City</p>
-<form (ngSubmit)="guardarcity()">
-    <input type="text"     [(ngModel)]="nuevoCity.city"       name="city"               placeholder="Ciudad" >
-    <input type="number"   [(ngModel)]="nuevoCity.country_id" country_id="country_id"   placeholder="Id de Pais">     
-    <button type="submit">Guardar</button>
+<form (ngSubmit)="guardarcity()" class="max-w-md mx-auto my-12 bg-pink-40 rounded-2xl border border-pink-200 p-9 shadow-[0_0_13px_-10px] text-pink-800">
+    <h1 class="text-center text-xl font-semibold">Registrar ciudad</h1>
+    <div class="flex flex-col [&_input]:border [&_input]:border-pink-200 [&_input]:py-2 [&_input]:px-2 [&_input]:rounded-lg [&_input]:text-black">
+        <label>Ciudad</label>
+        <input type="text" [(ngModel)]="nuevoCity.city" name="city" placeholder="Ciudad">
+        
+        <label>Id de país</label>
+        <input type="number" [(ngModel)]="nuevoCity.country_id" name="country_id" placeholder="Id de País">
+        
+        <button type="submit" class="bg-pink-800 text-white py-3 rounded-xl font-bold mt-4">Guardar</button>
+    </div>
 </form>
