@@ -1,29 +1,31 @@
-<table class="flex flex-col text-center items-center [&_td]:p-0.5">
-    <div class="[&_td]:border">
-        <h1>Listar cliente</h1>
-        <thead>
-            <tr class="bg-amber-200">
-                <td>Id cliente</td>
-                <td>Almacén</td>
-                <td>Nombre</td>
-                <td>Apellido</td>
-                <td>Correo</td>
-                <td>Id de Dirección</td>
-                <td>Activo</td>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let i of NewCustomer">
-                <td>{{i.customer_id}}</td>
-                <td>{{i.store_id}}</td>
-                <td>{{i.first_name}}</td>
-                <td>{{i.last_name}}</td>
-                <td>{{i.email}}</td>
-                <td>{{i.address_id}}</td>
-                <td>{{i.active}}</td>
-                <td class="bg-amber-100"><button [routerLink]="['/updatecustomer', i.customer_id]">Editar</button></td>
-                <td class="bg-red-300"><button (click)="eliminarCustomer(i.customer_id)">Eliminar</button></td>
-            </tr>
-        </tbody>
-    </div>
-</table>
+<h1 class="text-center">Listar cliente</h1>
+<div class="mx-10 overflow-x-auto max-w-full shadow-md rounded-xl my-4">
+    <table class="w-full whitespace-nowrap text-center [&_td]:p-2 [&_th]:p-2">
+            <thead >
+                <tr class="bg-pink-800 text-white [&_th]:border [&_th]:border-pink-950">
+                    <th>Id cliente</th>
+                    <th>Almacén</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Correo</th>
+                    <th>Id de Dirección</th>
+                    <th>Activo</th>
+                    <th>Editar</th>
+                    <th>Eliminar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let i of NewCustomer" class="[&_td]:border [&_td]:border-y-gray-200 [&_td]:border-x-gray-400">
+                    <td>{{i.customer_id}}</td>
+                    <td>{{i.store_id}}</td>
+                    <td>{{i.first_name}}</td>
+                    <td>{{i.last_name}}</td>
+                    <td>{{i.email}}</td>
+                    <td>{{i.address_id}}</td>
+                    <td>{{i.active}}</td>
+                    <td class="bg-amber-100"><button [routerLink]="['/updatecustomer', i.customer_id]">Editar</button></td>
+                    <td class="bg-red-300"><button (click)="eliminarCustomer(i.customer_id)">Eliminar</button></td>
+                </tr>
+            </tbody>
+    </table>
+</div>
