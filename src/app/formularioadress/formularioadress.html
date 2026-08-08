@@ -1,6 +1,35 @@
-<h1>Crear Direccion</h1>
-<form ngSubmit="guardarAdress()">
-    <input placeholder="Escribir Dirección" [(ngModel)]="nuevaAdress.address" name="address">
-    <input placeholder="Escribir Distrito" [(ngModel)]="nuevaAdress.district" name="district">
-    <button type="submit">Guardar</button>
-</form>
+<div class="max-w-md mx-auto my-12 bg-pink-40 rounded-2xl border border-pink-200 p-9">
+    
+  <h2 class="text-2xl text-pink-800 text-center">Escribe Tu Dirección</h2>
+  <p class="text-pink-300 text-sm text-center mt-1">!Completa el formulario!</p>
+
+  <hr class="my-6 border-pink-100">
+
+  <form (ngSubmit)="agregarAdress()" class="space-y-5">
+
+    <div>
+      <label class="block text-sm font-semibold text-pink-800 mb-1.5">Dirección</label>
+      <input type="text" [(ngModel)]="nuevaAdress.address" name="address" placeholder="Ingresa tu dirección"
+       class="w-full px-3.5 py-2.5 rounded-lg border border-pink-200 text-pink-200 placeholder-pink-200 text-sm focus:outline-none focus:border-pink-200 focus:ring-1 focus:ring-pink-500">
+    </div>
+
+    <div>
+      <label class="block text-sm font-semibold text-pink-800 mb-1.5">Distrito</label>
+      <input type="text" [(ngModel)]="nuevaAdress.district" name="district" placeholder="Ingresa tu distrito"
+       class="w-full px-3.5 py-2.5 rounded-lg border border-pink-200 text-pink-200 placeholder-pink-200 text-sm focus:outline-none focus:border-pink-200 focus:ring-1 focus:ring-pink-500">
+    </div>
+
+    <div>
+      <label class="block text-sm font-semibold text-pink-800 mb-1.5">Ciudad</label>
+      <input type="number" [(ngModel)]="nuevaAdress.city_id" name="city_id" placeholder="Ej: 1"
+       class="w-full px-3.5 py-2.5 rounded-lg border border-pink-200 text-pink-200 placeholder-pink-200 text-sm focus:outline-none focus:border-pink-200 focus:ring-1 focus:ring-pink-500">
+    </div>
+
+    <button type="submit" class="w-full 
+      mt-2 bg-pink-800 hover:bg-pink-890 
+      text-white font-medium py-3 px-4 
+      rounded-xl transition-colors text-sm">
+      Guardar Dirección
+    </button>
+  </form>
+</div>
