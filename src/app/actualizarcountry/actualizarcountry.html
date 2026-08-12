@@ -1,1 +1,20 @@
-<p>actualizarcountry works!</p>
+<div class="max-w-md mx-auto my-12 bg-white rounded-2xl border border-pink-200 p-9 shadow-sm">
+
+    <h2 class="text-2xl font-bold text-pink-800 text-center">Actualizar Pais</h2>
+    <hr class="my-6 border-pink-100">
+
+    <form (ngSubmit)="actualizarCountry()" class="space-y-5">
+
+        <div>
+            <label class="block text-sm font-semibold text-pink-800 mb-1.5">Pais</label>
+            <input type="text" [(ngModel)]="country.country" name="pais" placeholder="Nuevo Pais"
+                class="w-full px-3.5 py-2.5 rounded-lg border border-pink-200 text-pink-900 placeholder-pink-300 text-sm focus:outline-none focus:border-pink-500 focus:ring-1 focus:ring-pink-500">
+        </div>
+
+             
+
+        <button type="submit" class="w-full mt-2 bg-pink-800 hover:bg-pink-900 text-white font-medium py-3 px-4 rounded-xl transition-colors text-sm shadow-sm">
+            Actualizar Pais
+        </button>
+    </form>
+</div>

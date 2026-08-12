@@ -41,7 +41,7 @@ traerCountrys(){
       }
     })
 }   eliminarr(id:number){
-  this.http.delete('https://srrpeanqjqfxtnuwhjez.supabase.co/rest/v1/country?id=eq.'+id,
+  this.http.delete('https://srrpeanqjqfxtnuwhjez.supabase.co/rest/v1/country?country_id=eq.'+id,
         {
       headers:{
         apikey:'sb_publishable_qnp1xzi89N_0c2Yex-wbwQ_ddmCG28x',

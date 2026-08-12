@@ -26,9 +26,10 @@ export class ListCustomer implements AfterViewInit {
   NewCustomer: InCustomer[] = []
   API_CUSTOMER = "https://srrpeanqjqfxtnuwhjez.supabase.co/rest/v1/customer"
   
+ 
   private chart: any;
   
-  // NUEVO: Variable para guardar temporalmente el ID que el usuario quiere borrar
+ 
   idClienteAEliminar: number | null = null;
 
   constructor(
@@ -41,7 +42,9 @@ export class ListCustomer implements AfterViewInit {
     this.loadList()
   }
 
-  ngAfterViewInit() {}
+  ngAfterViewInit() {
+   
+  }
 
   loadList(){
       const headers = {
@@ -55,18 +58,22 @@ export class ListCustomer implements AfterViewInit {
           this.NewCustomer = response
           this.cdr.detectChanges()
           console.log(response)
+          
+          
           this.actualizarGrafica();
         }
       })
   }
 
   actualizarGrafica() {
+   
     const activos = this.NewCustomer.filter(c => c.active === true).length;
     const inactivos = this.NewCustomer.filter(c => c.active === false).length;
 
     const canvas = document.getElementById('customerPieChart') as HTMLCanvasElement;
     if (!canvas) return;
 
+    
     if (this.chart) {
       this.chart.destroy();
     }
@@ -77,7 +84,7 @@ export class ListCustomer implements AfterViewInit {
         labels: ['Activos', 'Inactivos'],
         datasets: [{
           data: [activos, inactivos],
-          backgroundColor: ['#831843', '#fbcfe8'],
+          backgroundColor: ['#831843', '#fbcfe8'], 
         }]
       },
       options: {
@@ -91,21 +98,21 @@ export class ListCustomer implements AfterViewInit {
     });
   }
 
-  // NUEVO: Abre la ventana emergente y guarda el ID del cliente seleccionado
+ 
   abrirModalEliminar(id: number) {
     this.idClienteAEliminar = id;
     const modal = document.getElementById('modalEliminar') as HTMLDialogElement;
     if (modal) modal.showModal();
   }
 
-  // NUEVO: Cierra la ventana emergente sin hacer nada
+  
   cerrarModalEliminar() {
     const modal = document.getElementById('modalEliminar') as HTMLDialogElement;
     if (modal) modal.close();
     this.idClienteAEliminar = null;
   }
 
-  // NUEVO: Ejecuta la eliminación real cuando el usuario confirma dentro del modal
+  
   confirmarEliminacion() {
     if (this.idClienteAEliminar === null) return;
 
@@ -118,7 +125,7 @@ export class ListCustomer implements AfterViewInit {
 
     this.http.delete(`${this.API_CUSTOMER}?customer_id=eq.${id}`, {headers}).subscribe({
       next:(response)=>{
-        this.cerrarModalEliminar(); // Cierra el modal al terminar
+        this.cerrarModalEliminar(); 
         this.cdr.detectChanges()
         this.loadList()
         alert(`Cliente con id ${id} eliminado correctamente`)
