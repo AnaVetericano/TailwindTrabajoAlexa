@@ -10,11 +10,12 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './formularioadress.css',
 })
 export class Formularioadress {
+
   nuevaAdress = {
-  address: '',
-  district: '',
-  city_id: 0
- };
+    address: '',
+    district: '',
+    city_id: 0
+  };
 
   constructor(private http: HttpClient) {}
 
