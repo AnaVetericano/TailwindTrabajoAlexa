@@ -34,8 +34,7 @@ export class ListCustomer {
 
   constructor(
     private http: HttpClient, 
-    private cdr: ChangeDetectorRef,
-    private router: Router
+    private cdr: ChangeDetectorRef
   ){}
 
   ngOnInit(){
