@@ -22,7 +22,7 @@ interface InCustomer{
   styleUrl: './list-customer.css',
 })
 
-export class ListCustomer implements AfterViewInit {
+export class ListCustomer {
   NewCustomer: InCustomer[] = []
   API_CUSTOMER = "https://srrpeanqjqfxtnuwhjez.supabase.co/rest/v1/customer"
   
@@ -42,9 +42,6 @@ export class ListCustomer implements AfterViewInit {
     this.loadList()
   }
 
-  ngAfterViewInit() {
-   
-  }
 
   loadList(){
       const headers = {
